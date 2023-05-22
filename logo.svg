@@ -1,0 +1,5 @@
+
+<svg width="300" height="200">
+  <text x="50" y="50" fill="#000000">[object Object]</text>
+  <[object Object] x="100" y="100" width="100" height="100" fill="#000000"></[object Object]>
+</svg>

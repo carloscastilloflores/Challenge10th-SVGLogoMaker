@@ -1,7 +1,9 @@
 import inquirer from 'inquirer'; 
-// const { svg } = require("html-minifier");
-import svg from 'html-minifier';
 import fs from 'fs';
+
+import pkg from 'html-minifier';
+const { svg } = pkg;
+
 
 const colors = [
   "black",
@@ -23,8 +25,6 @@ const shapes = [
 ];
 
 async function main() {
-    // Not sure how await works
-    // Not sure how async works either
   const text = await inquirer.prompt([
     {
       type: "input",
@@ -66,6 +66,7 @@ async function main() {
     shape,
     shapeColor: shapeColor(textColor(text, colors), text, shapes, textColor(text, colors)),
   };
+  
 
   const svgString = generateSvg(logo);
 
@@ -74,6 +75,17 @@ async function main() {
   fs.writeFileSync(svgFile, svgString);
 
   console.log(`Generated ${svgFile}`);
+
+  function generateSvg(logo) {
+    const svg = `
+  <svg width="300" height="200">
+    <text x="50" y="50" fill="${text.color}">${text.text}</text>
+    <${text.shape} x="100" y="100" width="100" height="100" fill="${text.shapeColor}"></${text.shape}>
+  </svg>
+  `;
+  // Why return? 
+    return svg;
+  }
 }
 
 function textColor(text, colors) {
@@ -94,18 +106,19 @@ function shapeColor(textColor, text, shapes, shapeColor) {
   }
 }
 
-function generateSvg(logo) {
-  const svg = `
-<svg width="300" height="200">
-  <text x="50" y="50" fill="${logo.color}">${logo.text}</text>
-  <${logo.shape} x="100" y="100" width="100" height="100" fill="${logo.shapeColor}"></${logo.shape}>
-</svg>
-`;
-// Why return? 
-  return svg;
-}
+// function generateSvg(logo) {
+//   const svg = `
+// <svg width="300" height="200">
+//   <text x="50" y="50" fill="${data.color}">${data.text}</text>
+//   <${data.shape} x="100" y="100" width="100" height="100" fill="${data.shapeColor}"></${data.shape}>
+// </svg>
+// `;
+// // Why return? 
+//   return svg;
+// }
 
 if (import.meta.main )  {
-
 }
+
 main();
+module.exports = Logo;

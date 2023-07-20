@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest"
+    "test": "jest --transform babel-jest"
   },
   "type": "module",
   "dependencies": {
@@ -9,6 +9,8 @@
     "inquirer": "^9.2.3"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.9",
+    "babel-jest": "^29.6.1",
     "jest": "^29.6.1"
   }
 }

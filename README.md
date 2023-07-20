@@ -1,170 +1,98 @@
-# 10 Object-oriented Programming: SVG Logo Maker
-Questions I have: 
-1.- How can i know where's the information of user input.
-Under the response variable already declared 
+# SVG-Logo-Maker
+Challenge #10
 
-## Your Task
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Your task is to build a Node.js command-line application that takes in user input to generate a logo and save it as an [SVG file](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics). The application prompts the user to select a color and shape, provide text for the logo, and save the generated SVG to a `.svg` file.
+## Table of Contents
 
-Because this application won’t be deployed, you’ll need to provide a link to a walkthrough video that demonstrates its functionality and passes all of the tests. You’ll need to submit a link to the video **and** add it to the README of your project.
+ * [Description](#description)
 
-Refer to the [Video Submission Guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) on the Full-Stack Blog for additional guidance on creating a video.
+ * [Live-Screen-Recording-of-Application-Functionality](#live-screen-recording-of-application-functionality)
 
-> **Note**: There is no starter code for this assignment.
-### User Story
+ * [Screenshots](#screenshots)
 
-```md
-AS a freelance web developer
-I WANT to generate a simple logo for my projects
-SO THAT I don't have to pay a graphic designer
-```
+ * [Technologies-Used](#technologies-used)
 
-## Acceptance Criteria
+ * [Installation](#installation)
 
-```md
-GIVEN a command-line application that accepts user input
-WHEN I am prompted for text
-THEN I can enter up to three characters
-WHEN I am prompted for the text color
-THEN I can enter a color keyword (OR a hexadecimal number)
-WHEN I am prompted for a shape
-THEN I am presented with a list of shapes to choose from: circle, triangle, and square
-WHEN I am prompted for the shape's color
-THEN I can enter a color keyword (OR a hexadecimal number)
-WHEN I have entered input for all the prompts
-THEN an SVG file is created named `logo.svg`
-AND the output text "Generated logo.svg" is printed in the command line
-WHEN I open the `logo.svg` file in a browser
-THEN I am shown a 300x200 pixel image that matches the criteria I entered
-```
+ * [Credits](#credits)
 
-## Mock-Up
+ * [Features](#features)
 
-The following image shows a mock-up of the generated SVG given the following input entered by the user: `SVG` for the text, `white` for the text color, `circle` from the list of shapes, and `green` for the shape color. Note that this is just an image of the output SVG and not the SVG file itself:
+ * [Usage-Information](#usage-information)
 
-![Image showing a green circle with white text that reads "SVG.".](./Images/10-oop-homework-demo.png)
+ * [Test-Instructions](#test-instructions)
 
-## Additional Requirements
+ * [License](#license)
 
-This Challenge combines many of the skills covered so far. In addition to the User Story and Acceptance Criteria, we’ve provided some guidelines to help you get started.
 
-Because this Challenge requires a video submission, refer to the [Full-Stack Blog video submission guide](https://coding-boot-camp.github.io/full-stack/computer-literacy/video-submission-guide) for guidance on creating and sharing a video.
+## Description
 
-Your application should use [Jest](https://www.npmjs.com/package/jest) for running the unit tests and [Inquirer](https://www.npmjs.com/package/inquirer/v/8.2.4) for collecting input from the user. The application will be invoked by using the following command:
+This application caters to freelance web developers seeking a cost-effective solution for creating simple logos without hiring a graphic designer. By leveraging the "inquirer" library, it prompts users in the command line to specify their logo preferences, including text content (up to 3 characters), text color, logo shape (triangle, square, or circle), and shape color. After collecting all user inputs, the application generates an SVG file incorporating the chosen logo design.
+This project has the implementation of unit testing, which ensures the code's correctness. The test suite consists of three tests, verifying that the application produces accurate shapes and colors. Through this development process, I gained insights into the significance of unit testing in larger projects involving multiple developers, it also highlights the potential of creating powerful applications without a graphical user interface. I also introduced some error handling in the first user prompt, preventing logos from being generated when more than three characters are entered.
 
-```bash
-node index.js
-```
+## Live Screen Recording of Application Functionality
 
-It is recommended that you start with a directory structure that looks like the following example:
 
-```md
-.  
-├── examples/           // Example svg file(s) created with the app
-├── lib/                // Folder for classes or functions
-    ├── shapes.js       // Exports `Triangle`, `Circle`, and `Square` classes
-    ├── shapes.test.js  // Jest tests for shapes
-    └── more...         // Additional files and tests
-├── .gitignore          // Indicates which folders and files Git should ignore
-├── index.js            // Runs the application using imports from lib/
-├── package.json
-└── README.md           // App description, link to video, setup and usage instructions           
-```
 
-> **Important**: Make sure that you remove `dist` from the `.gitignore` file so that Git will track this folder and include it when you push up to your application's repository.
-The application must include `Triangle`, `Circle`, and `Square` classes, as well as tests for each of these classes using Jest. While not a requirement, it is recommended that you place any common functionality and properties shared by the `Triangle`, `Circle`, and `Square` classes in a parent `Shape` class and use inheritance to reuse the code in the child classes.
+## Screenshots
 
-Each shape class should be tested for a `render()` method that returns a string for the corresponding SVG file with the given shape color.
+Logo Generation
 
-The following example test should pass:
+![Screenshot1-week-10-challenge](https://user-images.githubusercontent.com/120127903/232142589-86370721-ab54-4ff4-af4d-46a40fbb5d5f.png)
 
-```js
-const shape = new Triangle();
-shape.setColor("blue");
-expect(shape.render()).toEqual('<polygon points="150, 18 244, 182 56, 182" fill="blue" />');
-```
+![Screenshot2-week-10-challenge](https://user-images.githubusercontent.com/120127903/232142612-728f43cb-174a-4370-9847-e3ebb10ee23b.png)
 
-You may need to add additional files in the `lib` folder for handling user input, writing to a file, etc. Writing tests for these additional files is **optional**.
+![Screenshot3-week-10-challenge](https://user-images.githubusercontent.com/120127903/232144018-62741d39-3e09-492c-be82-125e38f91521.png)
 
-## Helpful SVG Resources
+Examples of Generated Logos
 
-* [Example SVG](https://static.fullstack-bootcamp.com/fullstack-ground/module-10/circle.svg)
+<img width="226" alt="Screenshot4-week-10-challenge" src="https://user-images.githubusercontent.com/120127903/232142654-9a5a9937-e831-4838-86a1-4323c7b9cc39.png">
 
-* [Scalable Vector Graphics (SVG)](https://en.wikipedia.org/wiki/Scalable_Vector_Graphics)
+<img width="245" alt="Screenshot5-week-10-challenge" src="https://user-images.githubusercontent.com/120127903/232142705-29cd92d9-1c12-46ce-a81a-64893ac15a00.png">
 
-* [SVG tutorial](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial)
+<img width="214" alt="Screenshot6-week-10-challenge" src="https://user-images.githubusercontent.com/120127903/232142727-5c9ce441-1ca7-443a-bb5f-391b3f0003cf.png">
 
-* [Basic SVG shapes](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes)
+## Technologies Used
 
-* [Text in SVG](https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Texts)
+This project is built on Node.js v16 and relies on various Node package manager (NPM) dependencies, including inquirer v8.2.4 for user input, the file system module for file handling, and jest v29.5.0 for conducting unit tests. To ensure proper handling of test files, Jest is configured to use Babel for transformation.
 
-* [SVG VS Code extension](https://marketplace.visualstudio.com/items?itemName=jock.svg)
+## Installation
 
-## Grading Requirements
+1. Clone the repo:
+   git clone https://github.com/rmessett15/SVG-Logo-Maker.git
 
-> **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
->
-> * A repository that has no code
->
-> * A repository that includes a unique name but nothing else
->
-> * A repository that includes only a README file but nothing else
->
-> * A repository that only includes starter code
-This Challenge is graded based on the following criteria:
+2. Open in VS Code. If you do not have VS code you must install it.
 
-### Deliverables: 15%
+3. Using the terminal, install node.js v16. If you have homebrew, the command should look like the following (brew install node@16), however this may vary and the documentation should be consulted.
 
-* At least one sample SVG file generated using the application must be submitted.
+4. Once node.js v16 is installed, in the terminal, utilize the command npm init -y to initialize and create a package.json where project files will be stored.
 
-* Your GitHub repository containing your application code.
+5. Next, use the terminal to run the command npm i to install the dependencies associated with this application (developers may need to install inquirer and jest directly from the command line, to do so the command for inquirer will be npm i inquirer@8.2.4 to install v8.2.4 of the inquirer, and npm i jest to install the latest version of jest).
 
-### Walkthrough Video: 32%
+6. To run the application, within the terminal, type the command node index.js.
 
-* A walkthrough video that demonstrates the functionality of the SVG logo maker and passing tests must be submitted.
+## Credits
 
-* The `README.md` file must include a link to the walkthrough video.
+Worked with the help of TA instructors, and searched in different forums such as stackoverflow. 
 
-* The walkthrough video must show all tests passing from the command line.
+## Usage Information
 
-* The walkthrough video must demonstrate how a user would invoke the application from the command line.
+To run this application, use the command line to navigate to the directory of the application, install all dependencies (npm i), then type the command node index.js. You will then be taken through a series of questions. Once all questions have been answered properly, a message will display to the command line telling you your logo has been generated. Find your new logo in the newly generated SVG file.
 
-* The walkthrough video must demonstrate how a user would enter responses to all of the prompts in the application.
+For unit testing instructions, navigate to the Test Instructions section.
 
-* The walkthrough video must demonstrate a generated SVG file, showing the file being opened in the browser. The image in the browser must reflect the choices made by the user (text, shape, and colors).
+## Test Instructions
 
-### Technical Acceptance Criteria: 40%
+To run unit testing, open the terminal, and use the command npm run test.
 
-* Satisfies all of the preceding acceptance criteria plus the following:
+![Screenshot7-week-10-challenge](https://user-images.githubusercontent.com/120127903/232142736-a2ed7de2-b924-4536-9f51-e9c6cd5fb1db.png)
 
-  * Uses the [Inquirer package](https://www.npmjs.com/package/inquirer/v/8.2.4).
+![Screenshot8-week-10-challenge](https://user-images.githubusercontent.com/120127903/232142745-dfe8aab8-4da0-4e8f-89b6-d153f2024825.png)
 
-  * Uses the [Jest package](https://www.npmjs.com/package/jest) for a suite of unit tests.
+![Screenshot9-week-10-challenge](https://user-images.githubusercontent.com/120127903/232142780-b9158992-dced-4da8-be89-e828b81f6023.png)
 
-  * The application must have `Triangle`, `Square`, and `Circle` classes.
+## License
 
-### Repository Quality: 13%
+This application is covered under the MIT License
 
-* Repository has a unique name.
-
-* Repository follows best practices for file structure and naming conventions.
-
-* Repository follows best practices for class/id naming conventions, indentation, quality comments, etc.
-
-* Repository contains multiple descriptive commit messages.
-
-* Repository contains a high-quality readme with description and a link to a walkthrough video.
-
-## Review
-
-You are required to submit the following for review:
-
-* A walkthrough video that demonstrates the functionality of the application and passing tests.
-
-* At least one sample SVG file generated using your application.
-
-* The URL of the GitHub repository, with a unique name and a README describing the project.
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
